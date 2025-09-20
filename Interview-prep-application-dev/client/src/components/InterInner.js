@@ -5,38 +5,12 @@ import "./InterInner.css";
 import { useState } from 'react';
 
 const InterInner = ({response}) => {
-
+  
   console.log("res: ",response);
-
 
   const [loading, setLoading] = useState(true);
 
-
   const matchQue = response.matchingQuestions;
-
-  // useEffect(() => {
-  //   const fetchInter = async () => {
-  //     try {
-  //       let res = await fetch('/profile/interviewprep');
-  //       if (!res.ok) {
-  //         res = await fetch('/problems');
-  //         if (!res.ok) {
-  //           throw new Error('Failed to fetch data');
-  //         }
-  //       }
-  //       const data = await res.json();
-  //       setInter(response);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //       // Handle error
-  //     }
-  //   };
-  //   fetchInter();
-  // }, []);
-
-  
-
 
   const data = React.useMemo(() => matchQue, [matchQue]);
   const columns = React.useMemo(
