@@ -1,6 +1,4 @@
 const User = require('../models/User');
-// const Otp = require('../models/otp');
-// const otp = require("../models/otp")
 
 const { generateToken, generateOTP } = require('../services/authentication');
 const nodemailer = require('nodemailer');
@@ -26,19 +24,14 @@ async function loginUser(req, res) {
 
 async function signUpUser(req, res, next) {
     const { username, email, password } = req.body;
-    //console.log(req.body);
+  
     try {
         const existingUser = await User.findOne({ email: email });
         if (existingUser) {
             // If existing user is present, render the SignUpForm component
            return res.json({success : false});
         }
-        // Continue with user registration
-        // req.newUser = new User({
-        //     username: username,
-        //     email: email,
-        //     password: password
-        // });
+       
         res.cookie('userData', {
             username: username,
             email: email,
@@ -62,8 +55,6 @@ function logout(req, res) {
 const sendOTP = (req, res, next) => {
     const otpValue = generateOTP();
 
-    //console.log("email : ",req.cookies.userData.email);
-
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -86,24 +77,13 @@ const sendOTP = (req, res, next) => {
 
     transporter.sendMail(mailOptions)
         .then(async info => {
-            // Email sent successfully, store OTP in database
-            // const otp = new Otp({
-            //     email: req.newUser.email, 
-            //     otp: otpValue
-            // });
-            //console.log("otp : ",otpValue);
+            
             return res.cookie('otp',otpValue, {
                 httpOnly: true,
                 secure: true,
                 maxAge: 60000
             }).json({"success":true});
-            //console.log("HELLO", req.newUser.email);
-            // await otp.save();
-            // res.json({success : true});
-            // return res.status(200).json({
-            //     success: true,
-            //     message: "Login Succesful",
-            // });
+            
         })
         .catch(err => {
             console.error('Error: ', err);
