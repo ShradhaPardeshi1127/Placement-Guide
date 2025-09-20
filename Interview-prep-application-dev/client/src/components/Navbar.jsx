@@ -23,9 +23,6 @@ const Navbar = (props) => {
                 <li className=" text-xl hover:scale-110 transition duration-300">
                     <Link to="/about">About</Link>
                 </li>
-                {/* <li className=" text-xl hover:scale-110 transition duration-300">
-                    <Link to="/contact">Contact</Link>
-                </li> */}
             </ul>
         </nav>
 
