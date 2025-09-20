@@ -5,8 +5,7 @@ import {FcGoogle} from "react-icons/fc"
 
 
 const Template = ({title, desc1, desc2, image, formtype, setIsLoggedIn}) => {
-
-    // console.log("ye rha mera form type");
+    
     // console.log(formtype)
   return (
     <div className='flex justify-between w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0'>
@@ -21,7 +20,6 @@ const Template = ({title, desc1, desc2, image, formtype, setIsLoggedIn}) => {
             <p className='text-[1.125rem] leading[1.625rem] mt-4' >
                 <span className='text-black-700'>{desc1}</span>
                 <br/>
-                {/* <span className='text-black-700 '>{desc2}</span> */}
             </p>
 
             {formtype === "signup" ? 
@@ -45,12 +43,6 @@ const Template = ({title, desc1, desc2, image, formtype, setIsLoggedIn}) => {
         </div>
 
         <div className='relative w-11/12 max-w-[450px] '>
-            {/* <img src={frameImage}
-                alt="Pattern"
-                width={558}
-                height={504}
-                loading="lazy"/> */}
-
             <img src={image}
                 alt="Students"
                 width={300}
